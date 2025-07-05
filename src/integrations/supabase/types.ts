@@ -9,7 +9,256 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      bookings: {
+        Row: {
+          car_id: string
+          created_at: string
+          customer_email: string
+          customer_name: string
+          customer_phone: string
+          end_date: string
+          id: string
+          notes: string | null
+          start_date: string
+          status: string
+          total_days: number
+          total_price: number
+          updated_at: string
+        }
+        Insert: {
+          car_id: string
+          created_at?: string
+          customer_email: string
+          customer_name: string
+          customer_phone: string
+          end_date: string
+          id?: string
+          notes?: string | null
+          start_date: string
+          status?: string
+          total_days: number
+          total_price: number
+          updated_at?: string
+        }
+        Update: {
+          car_id?: string
+          created_at?: string
+          customer_email?: string
+          customer_name?: string
+          customer_phone?: string
+          end_date?: string
+          id?: string
+          notes?: string | null
+          start_date?: string
+          status?: string
+          total_days?: number
+          total_price?: number
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bookings_car_id_fkey"
+            columns: ["car_id"]
+            isOneToOne: false
+            referencedRelation: "cars"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      cars: {
+        Row: {
+          brand: string
+          category_id: string | null
+          color: string
+          created_at: string
+          description: string | null
+          features: string[] | null
+          fuel_type: string
+          gallery_images: string[] | null
+          id: string
+          image_url: string | null
+          is_available: boolean
+          is_featured: boolean
+          model: string
+          price_per_day: number
+          seats: number
+          transmission: string
+          updated_at: string
+          year: number
+        }
+        Insert: {
+          brand: string
+          category_id?: string | null
+          color: string
+          created_at?: string
+          description?: string | null
+          features?: string[] | null
+          fuel_type: string
+          gallery_images?: string[] | null
+          id?: string
+          image_url?: string | null
+          is_available?: boolean
+          is_featured?: boolean
+          model: string
+          price_per_day: number
+          seats?: number
+          transmission: string
+          updated_at?: string
+          year: number
+        }
+        Update: {
+          brand?: string
+          category_id?: string | null
+          color?: string
+          created_at?: string
+          description?: string | null
+          features?: string[] | null
+          fuel_type?: string
+          gallery_images?: string[] | null
+          id?: string
+          image_url?: string | null
+          is_available?: boolean
+          is_featured?: boolean
+          model?: string
+          price_per_day?: number
+          seats?: number
+          transmission?: string
+          updated_at?: string
+          year?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "cars_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "categories"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      categories: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          name: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          name: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      galleries: {
+        Row: {
+          created_at: string
+          description: string | null
+          event_type: string | null
+          id: string
+          image_url: string | null
+          is_featured: boolean
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          event_type?: string | null
+          id?: string
+          image_url?: string | null
+          is_featured?: boolean
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          event_type?: string | null
+          id?: string
+          image_url?: string | null
+          is_featured?: boolean
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          full_name: string | null
+          id: string
+          phone: string | null
+          role: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          role?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          role?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      testimonials: {
+        Row: {
+          content: string
+          created_at: string
+          customer_name: string
+          customer_title: string | null
+          id: string
+          image_url: string | null
+          is_featured: boolean
+          rating: number
+          updated_at: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          customer_name: string
+          customer_title?: string | null
+          id?: string
+          image_url?: string | null
+          is_featured?: boolean
+          rating?: number
+          updated_at?: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          customer_name?: string
+          customer_title?: string | null
+          id?: string
+          image_url?: string | null
+          is_featured?: boolean
+          rating?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
