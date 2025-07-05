@@ -2,39 +2,61 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* Elegance Car Rental - Luxury Design System
+All colors MUST be HSL. Premium aesthetic with black, white, and gold.
 */
 
 @layer base {
   :root {
+    /* Base colors */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 0 0% 4%;
+    
+    /* Luxury palette */
+    --luxury-black: 0 0% 4%;
+    --luxury-gold: 45 85% 47%;
+    --luxury-gold-light: 45 85% 55%;
+    --luxury-gold-dark: 45 85% 35%;
+    --luxury-white: 0 0% 100%;
+    --luxury-gray: 0 0% 15%;
+    --luxury-gray-light: 0 0% 85%;
+
+    /* Primary theme colors for luxury branding */
+    --primary: 45 85% 47%; /* luxury gold */
+    --primary-foreground: 0 0% 4%; /* luxury black */
+
+    --secondary: 0 0% 15%; /* luxury gray */
+    --secondary-foreground: 0 0% 100%; /* luxury white */
+
+    --muted: 0 0% 95%;
+    --muted-foreground: 0 0% 15%;
+
+    --accent: 45 85% 55%; /* luxury gold light */
+    --accent-foreground: 0 0% 4%;
+
+    /* Premium gradients */
+    --gradient-luxury: linear-gradient(135deg, hsl(var(--luxury-gold)), hsl(var(--luxury-gold-light)));
+    --gradient-dark: linear-gradient(135deg, hsl(var(--luxury-black)), hsl(var(--luxury-gray)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--luxury-black) / 0.9), hsl(var(--luxury-gray) / 0.8));
+
+    /* Elegant shadows */
+    --shadow-luxury: 0 20px 60px -10px hsl(var(--luxury-black) / 0.3);
+    --shadow-gold: 0 10px 40px -10px hsl(var(--luxury-gold) / 0.4);
+    --shadow-card: 0 4px 20px -4px hsl(var(--luxury-black) / 0.1);
+
+    /* Smooth transitions */
+    --transition-luxury: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 4%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 4%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 45 85% 47%;
 
     --radius: 0.5rem;
 
@@ -101,5 +123,96 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  /* Luxury Button Variants */
+  .btn-luxury {
+    @apply bg-gradient-to-r from-primary to-accent text-primary-foreground;
+    @apply px-8 py-3 rounded-lg font-semibold;
+    @apply shadow-[var(--shadow-gold)] transition-[var(--transition-luxury)];
+    @apply hover:scale-105 hover:shadow-[var(--shadow-luxury)];
+  }
+  
+  .btn-outline-luxury {
+    @apply border-2 border-primary text-primary bg-transparent;
+    @apply px-8 py-3 rounded-lg font-semibold;
+    @apply transition-[var(--transition-smooth)];
+    @apply hover:bg-primary hover:text-primary-foreground;
+  }
+  
+  /* Hero Section Styles */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  /* Card Variants */
+  .card-luxury {
+    @apply bg-background border border-muted;
+    @apply rounded-xl p-6 shadow-[var(--shadow-card)];
+    @apply transition-[var(--transition-smooth)];
+    @apply hover:shadow-[var(--shadow-luxury)] hover:-translate-y-1;
+  }
+  
+  /* Text Gradients */
+  .text-gradient-gold {
+    background: var(--gradient-luxury);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@layer utilities {
+  /* Animation Classes */
+  .animate-fade-up {
+    @apply opacity-0 translate-y-8;
+    animation: fade-up 0.6s ease-out forwards;
+  }
+  
+  .animate-fade-in {
+    @apply opacity-0;
+    animation: fade-in 0.8s ease-out forwards;
+  }
+  
+  .animate-slide-in {
+    @apply translate-x-full;
+    animation: slide-in 0.5s ease-out forwards;
+  }
+  
+  /* Hover Effects */
+  .hover-scale {
+    @apply transition-transform duration-300 hover:scale-105;
+  }
+  
+  .hover-glow {
+    @apply transition-shadow duration-300;
+    @apply hover:shadow-[var(--shadow-gold)];
+  }
+}
+
+/* Keyframes */
+@keyframes fade-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in {
+  to {
+    transform: translateX(0);
   }
 }

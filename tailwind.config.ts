@@ -18,12 +18,26 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'playfair': ['Playfair Display', 'serif'],
+				'inter': ['Inter', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				// Luxury brand colors
+				luxury: {
+					black: 'hsl(var(--luxury-black))',
+					gold: 'hsl(var(--luxury-gold))',
+					'gold-light': 'hsl(var(--luxury-gold-light))',
+					'gold-dark': 'hsl(var(--luxury-gold-dark))',
+					white: 'hsl(var(--luxury-white))',
+					gray: 'hsl(var(--luxury-gray))',
+					'gray-light': 'hsl(var(--luxury-gray-light))',
+				},
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
